@@ -37,7 +37,7 @@ Ensure each column is correctly populated as missing or malformed data may lead 
 
 Once data matches the structure outlined above, place the CSV file in the designated directory within the repository.
 
-The category labels used in this project are: clinically approved /native, non-self / de-immunized mutant, non-self / cancer-associated neoantigens / *de novo*, not tested in humans.
+The category labels used in this project are: clinically approved /native, non-self / native, self/ de-immunized mutant, non-self / cancer-associated neoantigens / *de novo*, not tested in humans.
 
 #### Example Data
 An example of how the data should be structured is shown below:
