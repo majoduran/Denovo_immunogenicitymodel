@@ -28,12 +28,12 @@ Each CSV file should contain the following columns in the specified order:
 The Test dataset contains two extra columns that are important to include for following analysis:
 
 *   Category: The immunogenic classification of the sequence.
-*   Immunogenic Score: The known immunogenic score for controls, (0 = non-immunogenic, 1 = immunogenic).
+*   Immunogenic Score: The known immunogenic score for controls (0 = non-immunogenic, 1 = immunogenic).
 
 #### Additional Notes
 The CSV file must contain a header row with the column names as specified above.
 
-Ensure each column is correctly populated as missing or malformed data may lead to processing errors.
+Ensure each column is correctly populated, as missing or malformed data may lead to processing errors.
 
 Once data matches the structure outlined above, place the CSV file in the designated directory within the repository.
 
@@ -159,10 +159,10 @@ To address this challenge, we present two types of visualizations:
 We recommend running both plots. The linear frequency plot serves as a guide to identify which ranges of lengths are particularly prominent, while the axis-break plot allows for a focused examination of both the common and rare peptide lengths in the dataset.
 
 ## Visualization of *De Novo* Proteins' Tm Distribution
-The heat-stability of *de novo* proteins is greatly increased compared to normal proteins. In order to highlight this difference within the test dataset, the following code specifically visualize the melting temperature (Tm) distribution of *de novo* proteins within the test dataset.
+The heat-stability of *de novo* proteins is greatly increased compared to normal proteins. In order to highlight this difference within the test dataset, the following code specifically visualizes the melting temperature (Tm) distribution of *de novo* proteins within the test dataset.
 
 # Immunogenicity prediction
-An artificial neural network (ANN) from Dhanda *et al.* (2018) predict the immunogenicity of peptide sequences is performed in this section. Unlike traditional methods that rely on HLA binding affinity, this model predicts CD4+ T cell immunogenicity at the population level without needing HLA typing data. By training on validated datasets, it identifies key features that differentiate immunogenic peptides from non-immunogenic ones, resulting in an HLA-agnostic immunogenicity score. 
+An artificial neural network (ANN) from Dhanda *et al.* (2018) predicts the immunogenicity of peptide sequences is performed in this section. Unlike traditional methods that rely on HLA binding affinity, this model predicts CD4+ T cell immunogenicity at the population level without needing HLA typing data. By training on validated datasets, it identifies key features that differentiate immunogenic peptides from non-immunogenic ones, resulting in an HLA-agnostic immunogenicity score. 
 
 ### Output 
 For classification, we apply an immunogenicity score threshold of 70, above which peptides are excluded as
@@ -184,7 +184,7 @@ In this section, the predicted immunogenicity of *de novo* proteins is visualize
 ### Key Steps
 The function takes in a filtered_test_df DataFrame, which contains the immunogenicity predictions for the peptides, and an optional parameter model_name to label the plot appropriately.
 
-*   Identify Missing Scores: The function first identifies which peptides have missing immunogenicity scores. This is important to ensure that only complete data is used for visualization.
+*   Identify Missing Scores: The function identifies which peptides have missing immunogenicity scores. Those indicate that they are *de novo* proteins within the dataset.
 
 *   Count Predictions: It counts how many peptides are classified as immunogenic (marked as 1) and how many are classified as non-immunogenic (marked as 0). This helps in understanding the model's predictions and the distribution of these classes.
 
