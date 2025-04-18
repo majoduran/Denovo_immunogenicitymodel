@@ -192,6 +192,7 @@ The function takes in a filtered_df DataFrame, which contains the immunogenicity
 
 ### Usage Instructions 
 *   Prepare the DataFrame: Ensure that the filtered_df DataFrame is populated with the immunogenicity predictions from your model, including a column for the 'Immunogenic Score' and a unique identifier for each peptide.
+*   Execute the Visualization Function: Run the de_novo_protein_predictions function, providing the prepared DataFrame and display the bar plot that illustrates the distribution of immunogenicity predictions.
 
 # Evaluation of Immunogenicity Prediction
 To assess the predictive power of the immunogenic predictor model, the predicted immunogenicity scores can be compared against experimental results of the control peptides included in the test dataset. This evaluation employs a confusion matrix to visualize the classifications of true immunogenic and non-immunogenic peptides, as well as a calculation of the balanced accuracy and the F1 score.
@@ -207,23 +208,8 @@ To assess the predictive power of the immunogenic predictor model, the predicted
 ### Usage Instructions
 To run the evaluation, the true immunogenicity scores and the predicted scores are extracted from the filtered_df DataFrame. The metrics are then computed by calling the immunogenicity_model_metrics function, which generates visualizations of the performance metrics and confusion matrix.
 
-# Peptide Feature Comparisons for Immunogenicity
-A critical aspect of this project is the examination of key features that significantly influence immunogenicity predictions. Understanding how these features differ between natural and *de novo proteins* is essential for enhancing the accuracy of predictive models. The two primary features of this analysis are melting temperature (Tm) and peptide length, as highlighted by Quijano et al. (2020).
-
-### Key Steps
-*   Length Distribution Comparison: The function generates a kernel density estimate (KDE) plot to compare the distributions of peptide lengths between the training and test datasets, providing a visual representation of how these lengths vary.
-
-*   Tm Distribution Comparison: Similarly, the function creates a KDE plot for the melting temperature (Tm) of the peptides, allowing for an easy visual comparison between the two datasets.
-
-*   Visualization: The function displays both distributions side by side for convenient analysis, with legends and labels for clarity.
-
-### Usage Instructions
-*   Prepare Your Datasets: Ensure that your training and test datasets are formatted correctly with 'Length' and 'Tm' columns included.
-*   Run the Comparison Function: Call the plot_comparison function using your training and test DataFrames.
-*   Visualize the data distribution results.
-
-# Eucledian Distance Calculation
-In this section, we focus on evaluating the similarity between peptide sizes in the training and test datasets by calculating the Euclidean distance. This analysis is crucial for comparing top-performing immunogenic prediction models, particularly considering the variability in training strategies and its relevance in immunogenic determination. By assessing the distances between peptide sizes used in the training datasets and those present in the test dataset, we can gain insights into how well the models are likely to perform.
+# Euclidean Distance Calculation
+A critical aspect of this project is the examination of key features that significantly influence immunogenicity predictions. Understanding how these features differ between natural and *de novo proteins* is essential for enhancing the accuracy of predictive models. The two primary features of this analysis are melting temperature (Tm) and peptide length, as highlighted by Quijano et al. (2020). This section evaluates the similarity between peptide sizes in the training and test datasets by calculating the Euclidean distance. This analysis is crucial for comparing top-performing immunogenic prediction models, particularly considering the variability in training strategies and their relevance in immunogenic determination. By assessing the distances between peptide sizes used in the training datasets and those present in the test dataset, we can gain insights into how well the models are likely to perform.
 
 ### Key steps
 The compute_pairwise_distances function calculates the Euclidean distances between standardized features (specifically peptide length and melting temperature) in the training and test datasets. The function outputs an array of distances, where each value represents the distance between a test peptide and the closest training peptide. The function also generates a scatter plot visualizing the training data and the test data color-coded by distance.
