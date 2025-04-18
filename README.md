@@ -10,8 +10,7 @@ Our strategy begins with a preprocessing of peptide sequences to ensure that all
 - Visualization of Input Datasets
 - Immunogenicity prediction
 - Evaluating Immunogenicity Prediction
-- Peptide Feature Comparisons for Immunogenicity
-- Eucledian Distance Calculation
+- Euclidean Distance Calculation
 - References
 
 
@@ -163,7 +162,7 @@ We recommend running both plots. The linear frequency plot serves as a guide to 
 The heat-stability of *de novo* proteins is greatly increased compared to normal proteins. In order to highlight this difference within the test dataset, the following code specifically visualize the melting temperature (Tm) distribution of de novo proteins within the test dataset.
 
 # Immunogenicity prediction
-An artificial neural network (ANN) from Dhanda *et al.* (2018) predict the immunogenicity of peptide sequences is performed in this section. Unlike traditional methods that rely on HLA binding affinity, this model predicts CD4+ T cell immunogenicity at the population level without needing HLA typing data. By training on validated datasets, it identifies key features that differentiate immunogenic peptides from non-immunogenic ones, resulting in an HLA-agnostic immunogenicity score.
+An artificial neural network (ANN) from Dhanda *et al.* (2018) predict the immunogenicity of peptide sequences is performed in this section. Unlike traditional methods that rely on HLA binding affinity, this model predicts CD4+ T cell immunogenicity at the population level without needing HLA typing data. By training on validated datasets, it identifies key features that differentiate immunogenic peptides from non-immunogenic ones, resulting in an HLA-agnostic immunogenicity score. 
 
 ### Output 
 For classification, we apply an immunogenicity score threshold of 70, above which peptides are excluded as
@@ -174,9 +173,10 @@ with minimized false positives.
 The function returns a binary list representing the immunogenicity status of each peptide, where a value of '1' indicates immunogenic and '0' indicates non-immunogenic. This information is subsequently added as a new column to the cleaned dataset and exported to an Excel file for further analysis.
 
 ### Usage Instructions
-*   Initialization: The function initializes a list filled with zeros to represent non-immunogenic peptides.
-*   File Processing: It iterates over the specified input files (named according to the base_filename), reading the unique protein numbers from each file.
-*   Immunogenicity Marking: The unique protein numbers are adjusted based on their corresponding file number, and each immunogenic sequence is marked as '1' in the output list.
+*   Input the peptides into the webpage platform (http://tools.iedb.org/deimmunization/) following the structure: "Model{model_number}_peptide_batch_{batch_number}.txt" to run the Model 1.
+*   The output file should be in the format of "CD4_Prediction_{file_num}.csv"
+*   Those files should be put in the Data folder; and directory path should be re-run to include those new files that include immunogenicity scores of the input peptide sequences.
+*   The output from model 1 is then processed. It iterates over the specified input files (named according to the base_filename), reading the unique protein numbers from each file. The unique protein numbers are adjusted based on their corresponding file number, and each immunogenic sequence is marked as '1' in the output list.
 
   ## Immunogenic Prediction of *De Novo* Proteins
 In this section, the predicted immunogenicity of *de novo* proteins is visualized as immunogenic and non-immunogenic, based on the model’s output. This distribution helps in the evaluation of trends and patterns in the predictive models.
