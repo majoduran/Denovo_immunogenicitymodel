@@ -57,14 +57,14 @@ In this section, we outline the process for cleaning the datasets to ensure it i
 
 *  Handle Missing Values: To enable accurate data analysis, entries marked as "N/A" in the 'Immunogenic Score' column are converted to true NaN values. This step ensures that missing values are properly recognized by analytical tools and do not introduce biases in the model predictions.
 
-*  Prepare Peptide List: A list of unique, filtered peptide sequences is generated for integration into the immunogenicity prediction models. This final list is essential for ensuring that the data fed into the models is clean, well-structured, and ready for predictive analysis. In some cases, models require data inputs to go in batches of 100 datapoints. The code to split the dataset in batches of 100 is also provided.
+*  Prepare Peptide List: A list of unique, filtered peptide sequences is generated for integration into the immunogenicity prediction models. This final list is essential for ensuring that the data fed into the models is clean, well-structured, and ready for predictive analysis. In some cases, models require data inputs to go in batches of 100 datapoints. The code to split the dataset into batches of 100 is also provided.
 
 ### Usage Instructions
 *  Input File Preparation: Ensure that your input files are properly formatted and placed in an accessible directory.
 
-*  Modify Paths: In the script, adjust the input_file path and file_type argument within the deduplicate_and_save function calls in the main execution block as needed to point to your specific data files.
+*  Modify Paths: In the script, adjust the input file path and file name.
 
-*  Run the Script: Execute the script to perform the data cleaning process, which will generate a deduplicated output CSV file that can be used in subsequent analysis and modeling tasks.
+*  Run the Script: Execute the relevant lines of the script to perform the data cleaning process, which will generate a deduplicated output DataFrame. If the user wants to save it as a CSV file, refer to the commented-out code.
 
 # Melting Temperature Prediction
 ## Overview
@@ -182,7 +182,7 @@ The function returns a binary list representing the immunogenicity status of eac
 In this section, the predicted immunogenicity of *de novo* proteins is visualized as immunogenic and non-immunogenic, based on the model’s output. This distribution helps in the evaluation of trends and patterns in the predictive models.
 
 ### Key Steps
-The function takes in a filtered_df DataFrame, which contains the immunogenicity predictions for the peptides, and an optional parameter model_name to label the plot appropriately.
+The function takes in a filtered_test_df DataFrame, which contains the immunogenicity predictions for the peptides, and an optional parameter model_name to label the plot appropriately.
 
 *   Identify Missing Scores: The function first identifies which peptides have missing immunogenicity scores. This is important to ensure that only complete data is used for visualization.
 
@@ -191,7 +191,7 @@ The function takes in a filtered_df DataFrame, which contains the immunogenicity
 *   Create Bar Plot: A bar plot is generated to visually represent the counts of immunogenic and non-immunogenic peptides. Each category is displayed in a different color, making it easy to distinguish between the two.
 
 ### Usage Instructions 
-*   Prepare the DataFrame: Ensure that the filtered_df DataFrame is populated with the immunogenicity predictions from your model, including a column for the 'Immunogenic Score' and a unique identifier for each peptide.
+*   Prepare the DataFrame: Ensure that the filtered_test_df DataFrame is populated with the immunogenicity predictions from your model, including a column for the 'Immunogenic Score' and a unique identifier for each peptide.
 *   Execute the Visualization Function: Run the de_novo_protein_predictions function, providing the prepared DataFrame and display the bar plot that illustrates the distribution of immunogenicity predictions.
 
 # Evaluation of Immunogenicity Prediction
@@ -206,7 +206,7 @@ To assess the predictive power of the immunogenic predictor model, the predicted
 *   Confusion Matrix: The confusion matrix visually summarizes the model's classification results, allowing us to identify specific areas where the model overpredicts or underpredicts immunogenicity.
 
 ### Usage Instructions
-To run the evaluation, the true immunogenicity scores and the predicted scores are extracted from the filtered_df DataFrame. The metrics are then computed by calling the immunogenicity_model_metrics function, which generates visualizations of the performance metrics and confusion matrix.
+To run the evaluation, the true immunogenicity scores and the predicted scores are extracted from the filtered_test_df DataFrame. The metrics are then computed by calling the immunogenicity_model_metrics function, which generates visualizations of the performance metrics and confusion matrix.
 
 # Euclidean Distance Calculation
 A critical aspect of this project is the examination of key features that significantly influence immunogenicity predictions. Understanding how these features differ between natural and *de novo proteins* is essential for enhancing the accuracy of predictive models. The two primary features of this analysis are melting temperature (Tm) and peptide length, as highlighted by Quijano et al. (2020). This section evaluates the similarity between peptide sizes in the training and test datasets by calculating the Euclidean distance. This analysis is crucial for comparing top-performing immunogenic prediction models, particularly considering the variability in training strategies and their relevance in immunogenic determination. By assessing the distances between peptide sizes used in the training datasets and those present in the test dataset, we can gain insights into how well the models are likely to perform.
