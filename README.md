@@ -1,7 +1,7 @@
 # Modeling Immunogenicity of *De Novo* Proteins
 Welcome to our project repository! This project is designed to predict the immunogenicity of *de novo* proteins by integrating various data sources and leveraging existing immunogenicity prediction models. 
 
-Our strategy begins with a preprocessing of peptide sequences to ensure that all data is cleaned and standardized for accurate analysis. We then evaluate the immunogenicity of various peptide data sources while also assessing the predictive accuracy of each model. A key component of this project is the examination of important features that play a significant role in determining immunogenicity, especially as these features can differ noticeably between natural proteins and *de novo* proteins. The primary features we focus on are melting temperature and peptide length (Quijano *et al*., 2020). We compare these attributes between the peptides being evaluated and the training dataset to understand how they relate to the model's predictive capabilities, providing insights into what influences immunogenicity predictions.
+Our strategy begins with a preprocessing of peptide sequences to ensure that all data is cleaned and standardized for accurate analysis. We then evaluate the immunogenicity of various peptide data sources while also assessing the predictive accuracy of each model. A key component of this project is the examination of important features that play a significant role in determining immunogenicity, especially as these features can differ noticeably between natural proteins and *de novo* proteins. The primary features we focus on are melting temperature (Tm) and peptide length (Quijano *et al*., 2020). We compare these attributes between the peptides being evaluated and the training dataset to understand how they relate to the model's predictive capabilities, providing insights into what influences immunogenicity predictions.
 
 # Table of Content
 - Data Input Requirements
@@ -28,7 +28,7 @@ Each CSV file should contain the following columns in the specified order:
 The Test dataset contains two extra columns that are important to include for following analysis:
 
 *   Category: The immunogenic classification of the sequence.
-*   Immunogenic Score: The known immunogenic score for controls.
+*   Immunogenic Score: The known immunogenic score for controls, (0 = non-immunogenic, 1 = immunogenic).
 
 #### Additional Notes
 The CSV file must contain a header row with the column names as specified above.
@@ -51,7 +51,7 @@ MCDLPQ,166,54.9079,clinically approved,0
 In this section, we outline the process for cleaning the datasets to ensure it is suitable for further analysis and modeling in the context of immunogenicity prediction. The cleaning process includes several critical steps that enhance the data quality by removing duplicate entries, filtering out unsuitable sequences, and preparing the dataset for effective utilization in immunogenicity prediction models.
 
 ### Key Steps:
-*  Remove Duplicates: The first step involves deduplicating the dataset to guarantee that each peptide sequence is unique. This helps prevent redundancy in the analysis and ensures that all data points contribute meaningfully to model training and evaluation.
+*  Remove Duplicates: The first step involves deduplicating the test dataset to guarantee that each peptide sequence is unique. This helps prevent redundancy in the analysis and ensures that all data points contribute meaningfully to model training and evaluation.
 
 *  Filter Peptides by Length: Peptides shorter than 15 amino acids are excluded from the dataset, as such sequences are incompatible with many CD4 T cell prediction models.
 
