@@ -1,7 +1,7 @@
-# Modeling Immunogenicity of De Novo Proteins
+# Modeling Immunogenicity of *De Novo* Proteins
 Welcome to our project repository! This project is designed to predict the immunogenicity of *de novo* proteins by integrating various data sources and leveraging existing immunogenicity prediction models. 
 
-Our strategy begins with a preprocessing of peptide sequences to ensure that all data is cleaned and standardized for accurate analysis. We then evaluate the immunogenicity of various peptides while also assessing the predictive accuracy of each model. A key component of this project is the examination of important features that play a significant role in determining immunogenicity, especially as these features can differ noticeably between natural proteins and de novo proteins. The primary features we focus on are melting temperature and peptide length (Quijano *et al*., 2020). We compare these attributes between the peptides being evaluated and the training dataset to understand how they relate to the model's predictive capabilities, providing insights into what influences immunogenicity predictions.
+Our strategy begins with a preprocessing of peptide sequences to ensure that all data is cleaned and standardized for accurate analysis. We then evaluate the immunogenicity of various peptide data sources while also assessing the predictive accuracy of each model. A key component of this project is the examination of important features that play a significant role in determining immunogenicity, especially as these features can differ noticeably between natural proteins and *de novo* proteins. The primary features we focus on are melting temperature and peptide length (Quijano *et al*., 2020). We compare these attributes between the peptides being evaluated and the training dataset to understand how they relate to the model's predictive capabilities, providing insights into what influences immunogenicity predictions.
 
 # Table of Content
 - Data Input Requirements
@@ -37,7 +37,7 @@ Ensure each column is correctly populated as missing or malformed data may lead 
 
 Once data matches the structure outlined above, place the CSV file in the designated directory within the repository.
 
-The category labels used in this project are: clinically approved /native, non-self / de-immunized mutant, non-self / cancer-associated neoantigens / de novo, not tested in humans.
+The category labels used in this project are: clinically approved /native, non-self / de-immunized mutant, non-self / cancer-associated neoantigens / *de novo*, not tested in humans.
 
 #### Example Data
 An example of how the data should be structured is shown below:
@@ -159,7 +159,7 @@ To address this challenge, we present two types of visualizations:
 We recommend running both plots. The linear frequency plot serves as a guide to identify which ranges of lengths are particularly prominent, while the axis-break plot allows for a focused examination of both the common and rare peptide lengths in the dataset.
 
 ## Visualization of *De Novo* Proteins' Tm Distribution
-The heat-stability of *de novo* proteins is greatly increased compared to normal proteins. In order to highlight this difference within the test dataset, the following code specifically visualize the melting temperature (Tm) distribution of de novo proteins within the test dataset.
+The heat-stability of *de novo* proteins is greatly increased compared to normal proteins. In order to highlight this difference within the test dataset, the following code specifically visualize the melting temperature (Tm) distribution of *de novo* proteins within the test dataset.
 
 # Immunogenicity prediction
 An artificial neural network (ANN) from Dhanda *et al.* (2018) predict the immunogenicity of peptide sequences is performed in this section. Unlike traditional methods that rely on HLA binding affinity, this model predicts CD4+ T cell immunogenicity at the population level without needing HLA typing data. By training on validated datasets, it identifies key features that differentiate immunogenic peptides from non-immunogenic ones, resulting in an HLA-agnostic immunogenicity score. 
